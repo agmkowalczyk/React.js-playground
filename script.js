@@ -1,4 +1,4 @@
-function MyComponent({ title, content }) {
+function MyComponent({ title="Modal", content }) {
   return (
     <div>
       <dialog open>
@@ -10,6 +10,6 @@ function MyComponent({ title, content }) {
 }
 
 ReactDOM.render(
-  <MyComponent title="Tytuł" content="A tu jest treść" />,
+  <MyComponent content="A tu jest treść" />,
   document.getElementById('app')
 );
