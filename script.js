@@ -1,13 +1,15 @@
-function MyComponent() {
+function MyComponent({ title, content }) {
   return (
     <div>
-      <h1>Witaj, świecie!</h1>
-      <h2>To jest React.js!</h2>
+      <dialog open>
+        <h1>{title}</h1>
+        <p>{content}</p>
+      </dialog>
     </div>
   );
 }
 
 ReactDOM.render(
-  <MyComponent />,
+  <MyComponent title="Tytuł" content="A tu jest treść" />,
   document.getElementById('app')
 );
