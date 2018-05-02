@@ -8,16 +8,24 @@ class App extends React.Component {
     };
   }
   increment() {
-    this.setState({
-      counter: this.state.counter + 1,
-      totalClicks: this.state.totalClicks + 1
-    })
+    console.log("was", this.state.counter);
+
+    this.setState(prevState => {
+      return {
+        counter: prevState.counter + 1,
+        totalClicks: prevState.totalClicks + 1
+      }  
+    });
+    console.log("is", this.state.counter);
   }
   decrement() {
+    console.log("was", this.state.counter);
     this.setState({
       counter: this.state.counter - 1,
       totalClicks: this.state.totalClicks + 1
-    })
+    }, () => {
+      console.log("is", this.state.counter);
+    });
   }
   doubleClick() {
     this.setState({
