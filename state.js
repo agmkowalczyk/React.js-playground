@@ -4,12 +4,13 @@ class App extends React.Component {
     this.state = {
       counter: 0,
       totalClicks: 0,
-      doubleClicks: 0
+      doubleClicks: 0,
+      name: "",
+      surname: ""
     };
   }
   increment() {
     console.log("was", this.state.counter);
-
     this.setState(prevState => {
       return {
         counter: prevState.counter + 1,
@@ -32,14 +33,29 @@ class App extends React.Component {
       doubleClicks: this.state.doubleClicks + 1
     })
   }
+  inputValue(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
   render() {
     return (
       <div>
-        <button onClick={this.increment.bind(this)}>+</button>
-        <output onDoubleClick={this.doubleClick.bind(this)}> counter: {this.state.counter} </output>
-        <button onClick={this.decrement.bind(this)}>-</button>
-        <output> totalClicks: {this.state.totalClicks} </output>
-        <output> doubleClicks: {this.state.doubleClicks} </output>
+        <div>
+          <button onClick={this.increment.bind(this)}>+</button>
+          <output onDoubleClick={this.doubleClick.bind(this)}> counter: {this.state.counter} </output>
+          <button onClick={this.decrement.bind(this)}>-</button>
+          <output> totalClicks: {this.state.totalClicks} </output>
+          <output> doubleClicks: {this.state.doubleClicks} </output>
+        </div>
+        <div>
+          <label htmlFor="name">Imię </label>
+          <input id="name" name="name" onInput={this.inputValue.bind(this)} /><output> {this.state.name} </output>
+        </div>
+        <div>    
+          <label htmlFor="surname">Nazwisko </label>
+          <input id="surname" name="surname" onInput={this.inputValue.bind(this)}/><output> {this.state.surname} </output>
+        </div>
       </div>
     );
   }
