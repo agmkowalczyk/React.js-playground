@@ -1,31 +1,17 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UsersList from './UsersList';
 
 const allUsers = ['old_user1', 'old_user2', 'old_user3', 'new_user1', 'new_user2'];
 
-class UsersList extends Component {
-  
-  render() {
-    if (this.props.users.length > 0) {
-      return (
-        this.props.users.map(user => <li key={user}> {user} </li>)
-      );
-    }
-    return (
-      <p>No results!</p>
-    );
-  }
-}
-
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
     filteredUsers: allUsers
     }
   }
-
 
   filterUsers(e) {
     const text = e.target.value;
@@ -52,9 +38,7 @@ class App extends Component {
         </p>
         <div>
           <input onInput={this.filterUsers.bind(this)} />
-          <ul>
-            <UsersList users={this.state.filteredUsers} />
-          </ul>
+          <UsersList users={this.state.filteredUsers} />
         </div>
       </div>
     );
