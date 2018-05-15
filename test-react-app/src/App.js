@@ -4,7 +4,7 @@ import './App.css';
 
 const allUsers = ['old_user1', 'old_user2', 'old_user3', 'new_user1', 'new_user2'];
 
-class UserList extends Component {
+class UsersList extends Component {
   
   render() {
     if (this.props.users.length > 0) {
@@ -53,7 +53,7 @@ class App extends Component {
         <div>
           <input onInput={this.filterUsers.bind(this)} />
           <ul>
-            <UserList users={this.state.filteredUsers}/>
+            <UsersList users={this.state.filteredUsers} />
           </ul>
         </div>
       </div>
