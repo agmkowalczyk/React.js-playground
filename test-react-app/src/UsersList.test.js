@@ -29,3 +29,15 @@ describe('list of users', () => {
       });
   });
 });
+
+describe(`change props`, () => {
+  const users = ['person1', 'person2'];
+  const usersList = shallow(<UsersList users={[]} />);
+  usersList.setProps({ users });
+
+  users.forEach(user => {
+    it(`includes name ${user} on the list`, () => {
+      expect(usersList).toContainReact(<li> {user} </li>);
+    });
+  });
+});
