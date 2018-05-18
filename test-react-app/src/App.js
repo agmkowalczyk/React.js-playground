@@ -13,7 +13,7 @@ class App extends React.Component {
     }
   }
 
-  filterUsers(e) {
+  filterUsers = (e) => {
     const text = e.target.value;
     const prepareUsers = this.searchUsersForText(text);
     
@@ -37,7 +37,7 @@ class App extends React.Component {
           Filter User List
         </p>
         <div>
-          <input onInput={this.filterUsers.bind(this)} />
+          <input onInput={this.filterUsers} />
           <UsersList users={this.state.filteredUsers} />
         </div>
       </div>
