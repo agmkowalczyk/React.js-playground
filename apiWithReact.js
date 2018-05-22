@@ -53,15 +53,22 @@ const UserAvatar = ({ avatar }) => {
   );
 }
 
+const RefreshButton = ({ refreshButton }) => 
+  <button onClick={() => refreshButton()} className="ui button">Odśwież</button> 
+
 class App extends React.Component {
   state = {
-    contacts: []
+    contacts: null
   };
 
-  componentDidMount() {
+  getData = () => {console.log('pp');
     fetch("https://randomuser.me/api/?format=json&results=10")
       .then(res => res.json())
       .then(json => this.setState({ contacts: json.results }));
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   render() {
@@ -69,7 +76,8 @@ class App extends React.Component {
       <div>
         <AppHeader />
         <main className="ui main text container">
-          <ContactsList contacts={this.state.contacts} />
+          <RefreshButton refreshButton={this.getData} />
+          {this.state.contacts ? <ContactsList contacts={this.state.contacts} /> : 'Loading...'}
         </main>
       </div>
     );
