@@ -6,41 +6,32 @@ class App extends React.Component {
     isChecked: false
   }
 
-  handleNameChange = (e) => {
-    this.setState({name: e.target.value})
-  }
-
-  handleColorChange = (e) => {
-    this.setState({color: e.target.value})
-  }
-
-  handleMessageChange = (e) => {
-    this.setState({message: e.target.value})
-  }
-
-  handleCheckboxChange = (e) => {
-    this.setState({isChecked: e.target.checked})
+  handleInputChange = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [name]: value })
   }
 
   render() {
     return(
       <div>
         <div>
-          <input value={this.state.name} onChange={this.handleNameChange} />
+          <input name='name' value={this.state.name} onChange={this.handleInputChange} />
         </div>
         <div>
-          <select value={this.state.color} onChange={this.handleColorChange}>
+          <select name='color' value={this.state.color} onChange={this.handleInputChange}>
             <option value='red'>Red</option>
             <option value='blue'>Blue</option>
             <option value='green'>Green</option>
           </select>
         </div>     
         <div>
-          <textarea value={this.state.value} onChange={this.handleMessageChange}></textarea>
+          <textarea name='message' value={this.state.value} onChange={this.handleInputChange}></textarea>
         </div>  
         <div>
-          <input type='checkbox' checked={this.state.isChecked} onChange={this.handleCheckboxChange}/>
-        </div> 
+          <input name='isChecked' type='checkbox' checked={this.state.isChecked} onChange={this.handleInputChange}/>
+        </div>
       </div>
     );
   }
